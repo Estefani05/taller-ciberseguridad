@@ -1,0 +1,92 @@
+/* NAV: Flex + combinadores */
+header > nav .nav-list {                 /* hijo directo */
+  list-style: none;
+  display: flex;                         /* flex */
+  gap: var(--space-2);
+  padding: 0;
+  margin: var(--space-1) 0 0;
+  align-items: center;
+  justify-content: flex-start;          /* alinea a la izquierda */
+}
+nav a { text-decoration: none; color: var(--c-accent); font-weight: 600; }
+nav a + a {                              /* adyacente */
+  margin-left: .25rem;
+}
+
+/* IDs (demostración) */
+#agenda { border-top: 1px solid var(--c-border); padding-top: var(--space-3); }
+#expositores { border-top: 1px solid var(--c-border); padding-top: var(--space-3); }
+
+/* ESPACIADO EN AGENDA */
+#agenda table {
+  margin-bottom: var(--space-4);         /* separa tabla de la lista */
+}
+#agenda ol {
+  margin-top: var(--space-2);
+  padding-left: 1.5rem;
+}
+
+/* GRID de cards */
+.cards-grid {
+  display: grid;                          /* grid */
+  grid-template-columns: repeat(2, minmax(260px, 1fr)); /* repeat + minmax */
+  gap: var(--space-3);
+}
+
+/* Descendiente (combinador) */
+.card p { color: var(--c-text); }
+
+/* Hermanos generales para tags */
+.tag ~ .tag {                             /* hermanos */
+  margin-left: .5rem;
+}
+
+/* Aside */
+.aside-box {
+  background: var(--c-soft);
+  border: 1px solid var(--c-border);
+  border-radius: 10px;
+  padding: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+/* Logos de patrocinadores con espacio uniforme */
+.sponsor-logos {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  margin-top: var(--space-2);
+}
+.sponsor-logos img {
+  max-height: 72px;
+}
+
+/* Lista de sponsors con más aire */
+.sponsors {
+  margin: var(--space-2) 0 var(--space-2) 1.25rem;
+}
+.sponsors li {
+  margin-bottom: .5rem;
+}
+
+/* Blockquote */
+.quote {
+  margin: var(--space-4) 0 var(--space-2);
+  padding: 1rem 1rem 1rem 1.25rem;
+  background: var(--c-quote-bg);
+  border-left: 4px solid var(--c-quote-border);
+  color: #111827;
+  font-style: italic;
+  border-radius: 6px;
+}
+
+/* Colapso de márgenes controlado */
+#expositores .card { margin-top: var(--space-2); }
+
+/* Footer con respiro */
+.footer {
+  margin-top: var(--space-5);
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-4);
+  border-top: 1px solid var(--c-border);
+}
