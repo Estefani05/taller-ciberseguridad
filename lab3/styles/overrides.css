@@ -1,0 +1,9 @@
+/* Sobrescritura con !important: cambia el color de .badge SOLO dentro de .card */
+.card .badge {
+  background: #ef4444 !important;
+}
+
+/* Override puntual para Ubicación (demostración de !important) */
+#ubicacion a {
+  font-weight: 700 !important;
+}
