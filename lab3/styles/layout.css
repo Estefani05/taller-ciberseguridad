@@ -1,0 +1,290 @@
+/* ============== HEADER full-bleed ============== */
+.site-header {
+  width: 100%;
+  background: var(--c-accent);     /* azul botón */
+  box-shadow: none;                /* sin sombra para evitar “línea” */
+  position: relative;
+  z-index: 3;                      /* por encima del hero para el solape */
+}
+
+/* Solape pintado: extiende el azul 6px bajo el header para cubrir cualquier hairline */
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 6px;
+  background: var(--c-accent);
+  pointer-events: none;
+}
+
+.header {
+  text-align: center;
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-2);
+}
+
+.header h1 {
+  color: var(--c-text);
+  margin-bottom: var(--space-2);
+}
+
+/* Botón hamburguesa */
+.site-header .menu-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 36px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 8px;
+  margin-top: .25rem;
+  cursor: pointer;
+}
+
+.site-header .menu-toggle .bar {
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.site-header .menu-toggle:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+.menu-checkbox { position: absolute; opacity: 0; pointer-events: none; }
+
+/* NAV */
+.site-header > .header > nav .nav-list {
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  gap: .75rem;
+  padding: 0;
+  margin: .5rem 0 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-header nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+}
+
+.site-header nav a + a { margin-left: .25rem; }
+
+#menu-toggle:checked ~ nav .nav-list { display: flex; }
+
+/* ============== HERO (full-bleed) ============== */
+.hero {
+  position: relative;
+  margin: 0 0 var(--space-3);
+  margin-top: -6px;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  border-radius: 0;
+  overflow: hidden;
+  background: transparent;
+  height: clamp(220px, 35vw, 420px);
+  box-shadow: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 0;
+  z-index: 2;
+}
+
+.hero picture,
+.hero img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-decor {
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  bottom: 1rem;
+  width: 120px; height: 120px;
+  background: radial-gradient(circle, #c7d2fe 30%, transparent 31%) center/16px 16px;
+  opacity: .6;
+  border-radius: 12px;
+  display: none;
+  pointer-events: none;
+}
+
+/* ============== Secciones ============== */
+#expositores { border-top: 1px solid var(--c-border); padding-top: var(--space-3); }
+
+/* =========================
+   AGENDA 
+   ========================= */
+#agenda {
+  background: #f9fafb;
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  padding: var(--space-4);
+  margin: var(--space-5) 0;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, .08);
+}
+
+#agenda h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-3);
+}
+
+#agenda .table-wrap {
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid var(--c-border);
+  background: #fff;
+  box-shadow: 0 6px 16px rgba(17,24,39,.06);
+}
+
+#agenda table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+#agenda th, #agenda td {
+  border: 1px solid var(--c-border);
+  padding: 12px;
+  text-align: left;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+#agenda thead th {
+  background: #f3f4f6;
+  font-weight: 700;
+}
+
+#agenda .listado {
+  list-style: decimal;
+  padding-left: 1.25rem;
+  margin: var(--space-3) 0 0;
+}
+
+#agenda .listado li {
+  padding: .35rem .5rem;
+  font-weight: 500;
+}
+
+#agenda .listado li:nth-child(2n) {
+  background: #f8fafc;
+  border-radius: 6px;
+}
+
+/* =========================
+   REGISTRO como tarjeta
+   ========================= */
+#registro {
+  background: #f9fafb;
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  padding: var(--space-4);
+  margin: var(--space-5) 0;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, .08);
+}
+
+/* separa la frase de Schneier del Registro */
+#expositores + #registro {
+  margin-top: var(--space-6);
+}
+
+/* Inputs con más claridad dentro de la tarjeta */
+#registro .field {
+  margin-bottom: 1rem;
+}
+
+#registro input,
+#registro select {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: .5rem .75rem;
+  width: 100%;
+  font-size: 1rem;
+}
+
+#registro button.btn {
+  margin-top: 1rem;
+}
+
+/* ============== GRID de cards (Expositores) ============== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+.card p { color: var(--c-text); line-height: 1.7; }
+.tag ~ .tag { margin-left: .5rem; }
+
+/* Aside */
+.aside-box {
+  background: var(--c-soft);
+  border: 1px solid var(--c-border);
+  border-radius: 10px;
+  padding: var(--space-3);
+  margin-top: var(--space-5);
+  text-align: center;
+}
+
+/* Footer */
+.footer {
+  margin-top: var(--space-5);
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-4);
+  border-top: 1px solid var(--c-border);
+}
+
+/* ============== BREAKPOINTS ============== */
+@media (max-width: 480px) {
+  main > section { margin-bottom: var(--space-4); }
+  .form { gap: var(--space-2); }
+  .overflow-demo { max-height: 64px; }
+}
+
+@media (min-width: 768px) {
+  .site-header .menu-toggle { display: none; }
+  .site-header > .header > nav .nav-list {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-3);
+    margin: .25rem 0 0;
+    align-items: center;
+    justify-content: center;
+  }
+  .cards-grid {
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .container { max-width: 1140px; }
+  .cards-grid { grid-template-columns: repeat(3, minmax(220px, 1fr)); }
+  .sponsor-logos img { max-height: 80px; }
+  .hero-decor { display: block; }
+}
+
+/* Blockquote (frase de Schneier) */
+.quote {
+  margin: var(--space-5) 0 var(--space-4); 
+  padding: 1rem 1rem 1rem 1.25rem;
+  background: var(--c-quote-bg);
+  border-left: 4px solid var(--c-quote-border);
+  color: #111827;
+  font-style: italic;
+  border-radius: 6px;
+}
